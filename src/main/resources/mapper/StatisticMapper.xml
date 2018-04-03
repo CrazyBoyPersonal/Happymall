@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zjitc.mall.mapper.StatisticMapper">
+    <select id="userCount" resultType="java.lang.Integer">
+      select count(*)
+      from mmall_user;
+    </select>
+
+    <select id="productCount" resultType="java.lang.Integer">
+      select count(*)
+      from mmall_product;
+    </select>
+
+    <select id="orderCount" resultType="java.lang.Integer">
+      select count(*)
+      from mmall_order;
+    </select>
+</mapper>
