@@ -17,5 +17,5 @@ public interface StatisticService {
    *
    * @return
    */
-  Map<String, Object> statisticCount();
+  Map<String, Integer> statisticCount();
 }

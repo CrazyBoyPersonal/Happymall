@@ -24,8 +24,8 @@ public class StatisticServiceImpl implements  StatisticService {
   private StatisticMapper statisticMapper;
 
   @Override
-  public Map<String, Object> statisticCount() {
-    Map<String, Object> reqMap = new HashMap<String, Object>();
+  public Map<String, Integer> statisticCount() {
+    Map<String, Integer> reqMap = new HashMap<String, Integer>();
 
     Integer userCount = statisticMapper.userCount();
     Integer productCount = statisticMapper.productCount();
