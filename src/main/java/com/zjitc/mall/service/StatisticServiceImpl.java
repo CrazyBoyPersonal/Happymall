@@ -1,6 +1,5 @@
 package com.zjitc.mall.service;
 
-import com.zjitc.mall.common.ServerResponse;
 import com.zjitc.mall.mapper.StatisticMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +25,7 @@ public class StatisticServiceImpl implements  StatisticService {
 
   @Override
   public Map<String, Object> statisticCount() {
-    Map<String, Object> reqMap = new HashMap<>();
+    Map<String, Object> reqMap = new HashMap<>(16);
 
     Integer userCount = statisticMapper.userCount();
     Integer productCount = statisticMapper.productCount();

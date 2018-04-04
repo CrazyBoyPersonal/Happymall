@@ -61,6 +61,4 @@ public interface Redis {
    * @param millisecond
    */
   void pexpire(String key, Long millisecond);
-
-
 }

@@ -14,7 +14,7 @@ import java.util.Map;
 public interface StatisticService {
 
   /**
-   *
+   * statistic count
    * @return
    */
   Map<String, Object> statisticCount();

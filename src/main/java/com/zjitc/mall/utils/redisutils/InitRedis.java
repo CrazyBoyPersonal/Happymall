@@ -13,11 +13,11 @@ import redis.clients.jedis.Jedis;
  */
 public class InitRedis {
 
-  private static final String ip = "127.0.0.1";
-  private static final Integer port = 6379;
+  private static final String IP = "127.0.0.1";
+  private static final Integer PORT = 6379;
 
   public Jedis connection() {
-    Jedis jedis = new Jedis(ip, port);
+    Jedis jedis = new Jedis(IP, PORT);
     return jedis;
   }
 

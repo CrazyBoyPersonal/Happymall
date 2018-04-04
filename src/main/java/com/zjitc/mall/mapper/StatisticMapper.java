@@ -7,6 +7,7 @@ package com.zjitc.mall.mapper;
  * Time : 10:46
  * To change this template use File | Setting | File Template.
  * Description :
+ * @author kevin
  */
 public interface StatisticMapper {
 

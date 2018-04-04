@@ -11,7 +11,17 @@ import redis.clients.jedis.Jedis;
  * Description :
  * @author kevin
  */
-public class RedisImpl  implements Redis{
+public class RedisImpl  implements Redis {
+
+  private Jedis redis;
+
+  public void init() {
+    redis = new Jedis();
+  }
+
+  public void close() {
+    redis.close();
+  }
 
   @Override
   public void set(String key, String value) {

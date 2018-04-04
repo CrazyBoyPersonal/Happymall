@@ -4,20 +4,26 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
-        <property name="username" value="root"/>
-        <property name="password" value=""/>
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mmall"/>
-    </bean>
+  <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+    <property name="username" value="root"/>
+    <property name="password" value=""/>
+    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mmall"/>
+  </bean>
 
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath:mapper/*Mapper.xml"/>
-    </bean>
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="mapperLocations" value="classpath:mapper/*Mapper.xml"/>
+  </bean>
 
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.zjitc.mall.mapper"/>
-    </bean>
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    <property name="basePackage" value="com.zjitc.mall.mapper"/>
+  </bean>
+
+  <bean class="redis.clients.jedis.Jedis">
+    <constructor-arg name="host" value="127.0.0.1"/>
+    <constructor-arg name="port" value="6379"/>
+  </bean>
+
 </beans>

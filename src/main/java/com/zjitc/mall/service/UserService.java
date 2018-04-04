@@ -7,7 +7,9 @@ package com.zjitc.mall.service;
  * Time : 21:48
  * To change this template use File | Setting | File Template.
  * Description :
+ * @author kevin
  */
 public interface UserService {
+
 
 }
