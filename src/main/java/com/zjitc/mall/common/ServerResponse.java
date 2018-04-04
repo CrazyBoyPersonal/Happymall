@@ -15,13 +15,11 @@ public class ServerResponse<T> {
   private String msg;
   private T data;
 
-  public ServerResponse(Integer status) {
-    this.status = status;
+  public ServerResponse() {
   }
 
-  public ServerResponse(Integer status, String msg) {
+  public ServerResponse(Integer status) {
     this.status = status;
-    this.msg = msg;
   }
 
   public ServerResponse(Integer status, T data) {
