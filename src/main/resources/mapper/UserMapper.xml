@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zjitc.mall.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.zjitc.mall.model.User">
+        <constructor>
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="username" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="email" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="question" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="answer" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="role" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        </constructor>
+    </resultMap>
+
+    <insert id="register" parameterType="com.zjitc.mall.model.User">
+        insert into mmall_user (id, username, password,
+          email, phone, question,
+          answer, role, create_time,
+          update_time)
+        values (
+          #{id,jdbcType=INTEGER},
+          #{username,jdbcType=VARCHAR},
+          #{password,jdbcType=VARCHAR},
+          #{email,jdbcType=VARCHAR},
+          #{phone,jdbcType=VARCHAR},
+          #{question,jdbcType=VARCHAR},
+          #{answer,jdbcType=VARCHAR},
+          #{role,jdbcType=INTEGER},
+          #{createTime, jdbcType=TIMESTAMP},
+          #{updateTime, jdbcType=TIMESTAMP})
+    </insert>
+
+    <update id="updatePassword">
+        UPDATE mmall_user
+        SET password = #{newPassword, jdbcType=VARCHAR}, update_time = #{updateTime, jdbcType=TIMESTAMP}
+        WHERE username = #{username, jdbcType=VARCHAR}
+    </update>
+
+    <update id="updatePasswordByUser" parameterType="java.lang.Integer">
+        update mmall_user
+        set password = #{md5NewPwd,jdbcType=VARCHAR},
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateInfomation" parameterType="com.zjitc.mall.model.User">
+        UPDATE  mmall_user
+        <set>
+            username = #{username,jdbcType=VARCHAR},
+            password = #{password,jdbcType=VARCHAR},
+            email = #{email,jdbcType=VARCHAR},
+            phone = #{phone,jdbcType=VARCHAR},
+            question = #{question,jdbcType=VARCHAR},
+            answer = #{answer,jdbcType=VARCHAR},
+            role = #{role,jdbcType=INTEGER},
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+            update_time = #{updateTime, jdbcType=TIMESTAMP},
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="login" parameterType="java.lang.String" resultType="com.zjitc.mall.model.User">
+        SELECT *
+        FROM mmall_user
+        WHERE username = #{username, jdbcType=VARCHAR} AND password = #{md5Pwd, jdbcType=VARCHAR}
+    </select>
+
+    <select id="checkUsername" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM mmall_user
+        WHERE username = #{str,jdbcType=VARCHAR}
+    </select>
+
+    <select id="checkEamil" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM mmall_user
+        WHERE email = #{email, jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectQuestionByUsername" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT question
+        FROM mmall_user
+        WHERE username = #{username}
+    </select>
+
+    <select id="checkAnswer" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM mmall_user
+        WHERE username = #{username}
+        AND question = #{question}
+        AND answer = #{answer}
+    </select>
+
+    <select id="checkPassword" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM mmall_user
+        WHERE id = #{userId, jdbcType=INTEGER}
+        AND password = #{password, jdbcType=VARCHAR}
+    </select>
+
+    <select id="checkEamilById" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM mmall_user
+        WHERE id != #{id, jdbcType=INTEGER}
+        AND email = #{email,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getInfo" resultType="com.zjitc.mall.model.User">
+        SELECT *
+        FROM mmall_user
+        WHERE id = #{id, jdbcType=INTEGER}
+    </select>
+
+
+</mapper>

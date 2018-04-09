@@ -6,9 +6,9 @@
 
   <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
     <property name="username" value="root"/>
-    <property name="password" value=""/>
+    <property name="password" value="123456"/>
     <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mmall"/>
+    <property name="jdbcUrl" value="jdbc:mysql://192.168.42.130:3306/mmall"/>
   </bean>
 
   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -21,8 +21,8 @@
     <property name="basePackage" value="com.zjitc.mall.mapper"/>
   </bean>
 
-  <bean class="redis.clients.jedis.Jedis">
-    <constructor-arg name="host" value="127.0.0.1"/>
+  <bean class="redis.clients.jedis.Jedis" destroy-method="close">
+    <constructor-arg name="host" value="192.168.42.130"/>
     <constructor-arg name="port" value="6379"/>
   </bean>
 

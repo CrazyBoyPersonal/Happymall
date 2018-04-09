@@ -1,4 +1,4 @@
-package com.zjitc.mall.utils.redisutils;
+package com.zjitc.mall.utils.cacheutils;
 
 /**
  * Create with IntelliJ IDEA
